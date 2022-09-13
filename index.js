@@ -18,7 +18,7 @@ let playerScore = 0;
 function playRound(computerSelection, playerSelection) {
   computerSelection = getComputerChoice();
   console.log(computerSelection);
-  playerSelection = "rock";
+  playerSelection = prompt("rock, paper, scissors").toLowerCase();
   console.log(playerSelection);
 
   if (computerSelection === playerSelection) {
