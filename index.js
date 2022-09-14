@@ -80,17 +80,16 @@ function game() {
 
 // results after 5 rounds
 function results() {
+  const finale = document.querySelector("#finale");
   //determining the winner
   if (playerScore === compScore) {
-    console.log("its a draw");
+    finale.textContent = "Its a draw";
   } else if (playerScore > compScore) {
-    console.log(
-      "congratulations! you won" + " " + playerScore + " " + "out of 5 games"
-    );
+    finale.textContent =
+      "Congratulations! You won" + " " + playerScore + " " + "out of 5 games";
   } else if (playerScore < compScore) {
-    console.log(
-      "you lost. Computer won" + " " + compScore + " " + "out of 5 games"
-    );
+    finale.textContent =
+      "You lost. Computer won" + " " + compScore + " " + "out of 5 games";
   }
 }
 
@@ -105,7 +104,11 @@ buttons.forEach((btn) => {
     playRound(computerSelection, playerSelection);
     //Round counter
     const roundCounter = document.querySelector("#counter");
-    roundCounter.textContent = "Rounds played" + " " + round + " out of 5 ";
+    roundCounter.textContent = "Round " + round;
+
+    if (round === 5) {
+      results();
+    }
   });
 });
 
@@ -118,7 +121,7 @@ playerResult.textContent = playerScore;
 
 //Round counter
 const roundCounter = document.querySelector("#counter");
-roundCounter.textContent = "Rounds played" + " " + round + " out of 5 ";
+roundCounter.textContent = "Round " + round;
 
 // play 5 rounds
 // after 5 rounds evaluate the winner
