@@ -16,29 +16,47 @@ let playerScore = 0;
 
 //Playing round functions
 function playRound(computerSelection, playerSelection) {
- 
-  
   if (computerSelection === playerSelection) {
-    console.log("its a draw");
+    const div = document.querySelector("#results");
+    div.textContent = "Its a draw";
   } else if (computerSelection === "rock" && playerSelection === "scissors") {
-    compScore++;
-    console.log("you lost");
+    //when computer wins
+    ++compScore;
+    const compResult = document.querySelector("#comp");
+    compResult.textContent = compScore;
+    const div = document.querySelector("#results");
+    div.textContent = "you lost";
   } else if (computerSelection === "paper" && playerSelection === "rock") {
-    compScore++;
-    console.log(playerSelection);
-    console.log("you lost");
+    ++compScore;
+    const compResult = document.querySelector("#comp");
+    compResult.textContent = compScore;
+    const div = document.querySelector("#results");
+    div.textContent = "you lost";
   } else if (computerSelection === "scissors" && playerSelection === "paper") {
-    compScore++;
-    console.log("you lost");
+    ++compScore;
+    const compResult = document.querySelector("#comp");
+    compResult.textContent = compScore;
+    const div = document.querySelector("#results");
+    div.textContent = "you lost";
   } else if (computerSelection === "scissors" && playerSelection === "rock") {
-    playerScore++;
-    console.log("you won");
+    //when player wins
+    ++playerScore;
+    const playerResult = document.querySelector("#player");
+    playerResult.textContent = playerScore;
+    const div = document.querySelector("#results");
+    div.textContent = "you won";
   } else if (computerSelection === "paper" && playerSelection === "scissors") {
-    playerScore++;
-    console.log("you won");
+    ++playerScore;
+    const playerResult = document.querySelector("#player");
+    playerResult.textContent = playerScore;
+    const div = document.querySelector("#results");
+    div.textContent = "you won";
   } else if (computerSelection === "rock" && playerSelection === "paper") {
-    playerScore++;
-    console.log("you won");
+    ++playerScore;
+    const playerResult = document.querySelector("#player");
+    playerResult.textContent = playerScore;
+    const div = document.querySelector("#results");
+    div.textContent = "you won";
   }
 }
 
@@ -67,20 +85,20 @@ function results() {
 
 // Rock button
 
+//getting hold of the buttons
+const buttons = document.querySelectorAll("button");
 
-  //getting hold of the buttons
-  const buttons = document.querySelectorAll("button");
-
-  // adding event listeners to the buttons
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      let playerSelection = btn.getAttribute("value");
-      computerSelection = getComputerChoice();
-      playRound(computerSelection, playerSelection);
-      console.log(playerSelection)
-      console.log(computerSelection)
-      return;
-    });
+// adding event listeners to the buttons
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    let playerSelection = btn.getAttribute("value");
+    let computerSelection = getComputerChoice();
+    playRound(computerSelection, playerSelection);
   });
+});
 
+const compResult = document.querySelector("#comp");
+compResult.textContent = compScore;
 
+const playerResult = document.querySelector("#player");
+playerResult.textContent = playerScore;
