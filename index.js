@@ -16,11 +16,8 @@ let playerScore = 0;
 
 //Playing round functions
 function playRound(computerSelection, playerSelection) {
-  computerSelection = getComputerChoice();
-  console.log(computerSelection);
-  playerSelection = prompt("rock, paper, scissors").toLowerCase();
-  console.log(playerSelection);
-
+ 
+  
   if (computerSelection === playerSelection) {
     console.log("its a draw");
   } else if (computerSelection === "rock" && playerSelection === "scissors") {
@@ -28,6 +25,7 @@ function playRound(computerSelection, playerSelection) {
     console.log("you lost");
   } else if (computerSelection === "paper" && playerSelection === "rock") {
     compScore++;
+    console.log(playerSelection);
     console.log("you lost");
   } else if (computerSelection === "scissors" && playerSelection === "paper") {
     compScore++;
@@ -45,12 +43,13 @@ function playRound(computerSelection, playerSelection) {
 }
 
 //play 5 rounds of the game
+/*
 function game() {
   for (let i = 0; i < 5; i++) {
     playRound();
   }
 }
-
+*/
 function results() {
   //determining the winner
   if (playerScore === compScore) {
@@ -66,7 +65,22 @@ function results() {
   }
 }
 
-console.log(game());
-console.log(results());
-console.log(compScore);
-console.log(playerScore);
+// Rock button
+
+
+  //getting hold of the buttons
+  const buttons = document.querySelectorAll("button");
+
+  // adding event listeners to the buttons
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let playerSelection = btn.getAttribute("value");
+      computerSelection = getComputerChoice();
+      playRound(computerSelection, playerSelection);
+      console.log(playerSelection)
+      console.log(computerSelection)
+      return;
+    });
+  });
+
+
