@@ -70,14 +70,6 @@ function playRound(computerSelection, playerSelection) {
   }
 }
 
-//play 5 rounds of the game
-
-function game() {
-  for (let i = 0; i < 5; i++) {
-    playRound();
-  }
-}
-
 // results after 5 rounds
 function results() {
   const finale = document.querySelector("#finale");
@@ -108,6 +100,14 @@ buttons.forEach((btn) => {
 
     if (round === 5) {
       results();
+      //disabling the buttons  after round 5
+      
+      //resetting the rounds and the scoreboard
+      const resetBtn = document.querySelector("#reset");
+
+      resetBtn.addEventListener("click", () => {
+        window.location.reload();
+      });
     }
   });
 });
@@ -127,4 +127,6 @@ roundCounter.textContent = "Round " + round;
 // after 5 rounds evaluate the winner
 // set counter
 // when counter reaches 5 determine the winner
-// display the winner and then reset the score
+// display the winner
+// reset the score
+// reset the round counter
